@@ -56,7 +56,7 @@ def convert ( file )
 
       v = ( v.nil? ) ? '""' : ( numeric?( v ) ) ? v : ( v.kind_of?(String) ) ? '"' + v.gsub('"', '\"') + '"' : v
 
-      File.open(sqlfile, 'a') { |file| file.write v.force_encoding("CP866").encode("UTF-8") + ( je = (j == count) ? '' : ', ' ) }
+      File.open(sqlfile, 'a') { |file| file.write v.to_s.encode("UTF-8") + ( je = (j == count) ? '' : ', ' ) }
     end
 
     if ( i == maxrecs )
